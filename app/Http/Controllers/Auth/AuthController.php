@@ -45,7 +45,7 @@ class AuthController extends Controller
    
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('dashboard')
+            return redirect()->intended('products')
                         ->withSuccess('You have Successfully loggedin');
         }
   
@@ -65,11 +65,11 @@ class AuthController extends Controller
             'email' => 'required|email|unique:customers',
             'password' => 'required|min:6',
         ]);
-           
+        
         $data = $request->all();
         $check = $this->create($data);
-         
-        return redirect("dashboard")->withSuccess('Great! You have Successfully loggedin');
+        $this->postLogin($request);
+        return redirect("products")->withSuccess('Great! You have Successfully loggedin');
     }
     
     /**
@@ -80,7 +80,7 @@ class AuthController extends Controller
     public function dashboard()
     {
         if(Auth::check()){
-            return view('dashboard');
+            return view('products');
         }
   
         return redirect("/")->withSuccess('Opps! You do not have access');
