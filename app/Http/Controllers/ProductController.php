@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -14,7 +16,11 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        if(Auth::check()){
+            return view('productsList', ['products' => Product::all()]);
+        }
+  
+        return redirect("/")->withSuccess('Opps! You do not have access');
     }
 
     /**
