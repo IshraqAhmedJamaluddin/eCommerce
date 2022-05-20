@@ -36,7 +36,6 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Products') }}
-                    <a href="{{ route('add-product') }}" class="card-link">Add Product</a>
                 </div>
                 <div class="card-body">
                     @foreach ($products as $product)
