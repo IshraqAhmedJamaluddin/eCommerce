@@ -30,7 +30,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('addProduct');
     }
 
     /**
@@ -41,7 +41,14 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $record = new Product();
+        $record->name = request('name');
+        $record->price = request('price');
+        $record->weight = request('weight');
+        $record->description = request('description');
+        $record->stock = request('stock');
+        $record->save();
+        return redirect()->back();
     }
 
     /**

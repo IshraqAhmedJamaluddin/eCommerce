@@ -35,8 +35,9 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Products') }}</div>
-  
+                <div class="card-header">{{ __('Products') }}
+                    <a href="{{ route('add-product') }}" class="card-link">Add Product</a>
+                </div>
                 <div class="card-body">
                     @foreach ($products as $product)
                         <div class="card2">
@@ -47,7 +48,6 @@
                             <p><button>Add to Cart</button></p>
                         </div>
                     @endforeach
-
                 </div>
             </div>
         </div>
