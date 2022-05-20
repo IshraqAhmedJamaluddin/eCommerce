@@ -20,6 +20,7 @@ class CreateOrderDetailsTable extends Migration
             $table->float('price', 8, 2);
             $table->string('sku');
             $table->integer('quantity');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -23,6 +23,7 @@ class CreateCustomersTable extends Migration
             $table->string('country')->nullable();
             $table->string('phone')->nullable();
             $table->string('password');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

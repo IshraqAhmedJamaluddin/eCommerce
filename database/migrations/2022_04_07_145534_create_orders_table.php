@@ -20,6 +20,7 @@ class CreateOrdersTable extends Migration
             $table->string('shipping_address');
             $table->string('order_date');
             $table->string('order_status');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

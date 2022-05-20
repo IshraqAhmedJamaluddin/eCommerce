@@ -20,6 +20,7 @@ class CreateProductsTable extends Migration
             $table->float('weight')->usigned()->nullable();
             $table->string('description');
             $table->integer('stock')->usigned();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
