@@ -14,7 +14,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $records = Category::all();
+        // return view('showCategories', compact('records'));
     }
 
     /**
@@ -24,7 +25,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        // return view('addCategory');
     }
 
     /**
@@ -35,7 +36,15 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required'
+        ]);
+        
+        // $record = new Category();
+        // $record->fill($request->all());
+        $record = Category::create($request->all());
+        return redirect()->back()->withSuccess('Great! You have Successfully created a category');
     }
 
     /**
@@ -46,7 +55,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        // return view('categories.show', compact('category'));
     }
 
     /**
@@ -57,7 +66,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        // return view('categories.update', compact('blog'));
     }
 
     /**
@@ -69,7 +78,10 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $category->update($request->all());
+
+        $records = Category::all();
+        // return view('showCategories', compact('records'));
     }
 
     /**
@@ -80,6 +92,9 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+
+        $records = Category::all();
+        // return view('showCategories', compact('records'));
     }
 }
