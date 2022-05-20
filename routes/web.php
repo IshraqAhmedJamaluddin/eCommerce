@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Auth\AuthController;
 
 /*
@@ -29,3 +30,5 @@ Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
 // Products
 Route::get('products', [ProductController::class, 'index'])->name('products');
+
+Route::resource('categories', CategoryController::class);
